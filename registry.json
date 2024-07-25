@@ -1,0 +1,52 @@
+{
+  "services": {
+    "login": {
+      "apiName": "login",
+      "host": "http://localhost",
+      "port": 6000,
+      "url": "http://localhost:6000/"
+    },
+    "payments": {
+      "apiName": "payments",
+      "host": "http://localhost",
+      "port": 6060,
+      "url": "http://localhost:6060/"
+    },
+    "ads": {
+      "apiName": "ads",
+      "host": "http://localhost",
+      "port": 6020,
+      "url": "http://localhost:6020/"
+    },
+    "analytics": {
+      "apiName": "analytics",
+      "host": "http://localhost",
+      "port": 6040,
+      "url": "http://localhost:6040/"
+    },
+    "search": {
+      "apiName": "search",
+      "host": "http://localhost",
+      "port": 6082,
+      "url": "http://localhost:6082/"
+    },
+    "post": {
+      "apiName": "post",
+      "host": "http://localhost",
+      "port": 7701,
+      "url": "http://localhost:7701/"
+    },
+    "chats": {
+      "apiName": "chats",
+      "host": "http://localhost",
+      "port": 7801,
+      "url": "http://localhost:7801/"
+    },
+    "product": {
+      "apiName": "product",
+      "host": "http://localhost",
+      "port": 7801,
+      "url": "http://localhost:7901/"
+    }
+  }
+}
