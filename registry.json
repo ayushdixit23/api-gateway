@@ -45,7 +45,7 @@
     "product": {
       "apiName": "product",
       "host": "http://localhost",
-      "port": 7801,
+      "port": 7901,
       "url": "http://localhost:7901/"
     }
   }
