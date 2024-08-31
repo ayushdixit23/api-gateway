@@ -4,15 +4,18 @@ const router = express.Router();
 const multer = require("multer")
 const registry = require("../registry.json")
 const fs = require('fs');
+const os = require('os');
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, '/tmp');  // Temporary directory for uploads
+		const tempDir = os.tmpdir();  // Get the OS-specific temp directory
+		cb(null, tempDir);
 	},
 	filename: function (req, file, cb) {
 		cb(null, `${file.originalname}`);
 	}
 });
+
 const upload = multer({
 	storage: storage,
 	limits: { fileSize: 10000000000000000000000000000000000000000000000000000000000000000 },
