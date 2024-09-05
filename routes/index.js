@@ -23,6 +23,21 @@ const upload = multer({
 
 const FormData = require('form-data');
 
+
+const deleteFiles = (files) => {
+	if (files && Array.isArray(files)) {
+		files.forEach(file => {
+			try {
+				if (fs.existsSync(file.path)) {
+					fs.unlinkSync(file.path);
+				}
+			} catch (error) {
+				console.error(`Error deleting file ${file.path}:`, error);
+			}
+		});
+	}
+};
+
 router.all('/:apiName/*', upload.any(), async (req, res) => {
 	try {
 		const { apiName } = req.params;
@@ -73,8 +88,9 @@ router.all('/:apiName/*', upload.any(), async (req, res) => {
 			res.send(resp.data);
 
 			// Clean up the temporary files
+
 			if (req?.files) {
-				req.files?.forEach(file => fs.unlinkSync(file.path));
+				req.files?.forEach(file => fs?.unlinkSync(file.path));
 			}
 		} else {
 			console.log("API Name doesn't exist");
@@ -83,6 +99,10 @@ router.all('/:apiName/*', upload.any(), async (req, res) => {
 	} catch (error) {
 		console.error("Error handling request:", error);
 		res.status(400).send("Internal Server Error");
+	} finally {
+		if (req.files) {
+			deleteFiles(req.files);
+		}
 	}
 });
 
